@@ -1,0 +1,53 @@
+<script type="text/javascript">
+var feca = (function () {
+    function feca() {
+    }
+    feca.main = function (args) {
+        var s1 = prompt('ingrese string1: ');
+        var s2 = prompt('ingrese string2: ');
+        var s1 = '!' + s1;
+        var s2 = '?' + s2;
+        var arr1 = (s1).split('');
+        var arr2 = (s2).split('');
+        var longi1 = arr1.length + 1;
+        if (s1.length - 1 > 1 && s1.length - 1 < 5000 && s2.length - 1 > 1 && s2.length - 1 < 5000) {
+            var arr1 = (s1).split('');
+            var arr2 = (s2).split('');
+            var longi1 = arr1.length + 1;
+            var arr = (function (dims) { var allocate = function (dims) { if (dims.length == 0) {
+                return 0;
+            }
+            else {
+                var array = [];
+                for (var i = 0; i < dims[0]; i++) {
+                    array.push(allocate(dims.slice(1)));
+                }
+                return array;
+            } }; return allocate(dims); })([arr1.length + 1, arr1.length + 1]);
+            for (var i = 1; i < arr1.length + 1; i++) {
+                {
+                    for (var j = 1; j < arr1.length + 1; j++) {
+                        {
+                            if ((function (c) { return c.charCodeAt == null ? c : c.charCodeAt(0); })(arr1[i - 1]) == (function (c) { return c.charCodeAt == null ? c : c.charCodeAt(0); })(arr2[j - 1])) {
+                                arr[i][j] = arr[i - 1][j - 1] + 1;
+                            }
+                            else {
+                                arr[i][j] = Math.max(arr[i - 1][j], arr[i][j - 1]);
+                            }
+                        };
+                    }
+                };
+            }
+            console.info(arr[longi1 - 1][longi1 - 1]);
+            document.write("sub-string children max: ", arr[longi1 - 1][longi1 - 1])
+        }
+        else {
+            console.info("error");
+        }
+    };
+    return feca;
+}());
+feca["__class"] = "feca";
+feca.main(null);
+
+</script>
